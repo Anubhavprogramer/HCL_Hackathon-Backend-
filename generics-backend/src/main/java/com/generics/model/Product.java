@@ -9,20 +9,20 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class User {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     private String name;
+    private Double price;
+    private String category;
+    private Integer stock;
+    private String size;
+    private String packagingType;
 
-    @Column(unique = true, nullable = false)
-    private String email;
-
-    private String password;
-
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    private User seller;
 }
